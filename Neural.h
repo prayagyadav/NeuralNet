@@ -89,9 +89,12 @@ void layer::pop(){
 }
 
 //The whole mesh consisting of different layers
-class mesh {
+class sequential{
 private:
 
 public:
+  layer toplayer(int Nodes);
 };
+layer sequential::toplayer(int Nodes){
 
+}
