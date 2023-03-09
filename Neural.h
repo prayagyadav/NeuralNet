@@ -93,8 +93,24 @@ class sequential{
 private:
 
 public:
-  layer toplayer(int Nodes);
+    int LayerNumber = 0;
+    void makelayer(int Nodes);
+    vector<double> inputlayer(int Nodes, vector<double> weights);
+    vector<double> hiddenlayer(int Nodes, vector<double> weights);
+    vector<double> outputlayer(int Nodes, vector<double> weights);
 };
-layer sequential::toplayer(int Nodes){
+void makelayer(int nodes){
+    layer(LayerNumber, nodes);
+    LayerNumber++;
+}
+
+vector<double> sequential::inputlayer(int Nodes,vector<double> weights){
+
+}
+vector<double> sequential::hiddenlayer(int Nodes, vector<double> weights){
+
+
+}
+vector<double> sequential::outputlayer(int Nodes, vector<double> weights){
 
 }
