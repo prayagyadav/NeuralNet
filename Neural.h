@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+
 using namespace std;
 
 
@@ -49,6 +50,7 @@ public:
     Node getNode(int i);
     void append(Node m); //at a node at the end
     void pop(); //delete a node from the end
+    void printinfo();
 };
 layer::layer(){
 
@@ -87,30 +89,72 @@ void layer::append(Node m){
 void layer::pop(){
     NodeArray.pop_back();
 }
+void layer::printinfo(){
+    cout<<"Printing Layer : "<<getIndex()<<endl;
 
+}
 //The whole mesh consisting of different layers
 class sequential{
 private:
 
 public:
     int LayerNumber = 0;
-    void makelayer(int Nodes);
+    vector<layer> *Layer_Array;
+    void makelayer(int nodes);
     vector<double> inputlayer(int Nodes, vector<double> weights);
     vector<double> hiddenlayer(int Nodes, vector<double> weights);
     vector<double> outputlayer(int Nodes, vector<double> weights);
+    void DrawMesh();
+    void forward(vector<double> input_vector );
+    void printmesh();
 };
-void makelayer(int nodes){
-    layer(LayerNumber, nodes);
+void sequential::makelayer(int nodes){
+    layer i ;
+    i = layer(LayerNumber, nodes);
     LayerNumber++;
+    Layer_Array->push_back(i);
 }
 
 vector<double> sequential::inputlayer(int Nodes,vector<double> weights){
-
+    makelayer(Nodes);
+    //add bias node 1.0 to input layer
+    return weights;
 }
 vector<double> sequential::hiddenlayer(int Nodes, vector<double> weights){
-
-
+    makelayer(Nodes);
+    return weights;
 }
 vector<double> sequential::outputlayer(int Nodes, vector<double> weights){
+    makelayer(Nodes);
+    return weights;
+}
+
+void DrawMesh(){
+
+}
+void sequential::forward(vector<double> input_vector ){
+    for (int i = 0 ; i < LayerNumber ; i++ ) {
+        if (i == 0){
+            //First Layer
+
+
+        }
+        else if (i == LayerNumber-1) {
+            //Last Layer
+
+        }
+        else {
+            //Hidden Intermediate Layer
+
+
+        }
+
+    }
+}
+void sequential::printmesh(){
+    for (int i  = 0 ; i < Layer_Array->size(); i++){
+        Layer_Array->at(i).printinfo();
+    }
+
 
 }
